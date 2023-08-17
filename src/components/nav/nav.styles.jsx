@@ -35,3 +35,9 @@ export const ArrowContainer = styled.span`
 		opacity: ${props => (props.show === true ? 1 : 0)};
 	}
 `;
+
+export const PreviewContainer = styled.section`
+	${tw`
+    flex justify-evenly
+    `}
+`;
