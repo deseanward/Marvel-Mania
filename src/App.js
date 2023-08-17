@@ -1,4 +1,7 @@
+import { useEffect } from 'react';
+
 import { Routes, Route } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 import './App.css';
 import Header from './components/header/header.component';
@@ -9,7 +12,25 @@ import GamesPage from './routes/Games/games-page.component';
 import HomePage from './routes/Home/home-page.component';
 import MoviesPage from './routes/Movies/movies-page.component';
 
+import { fetchData } from './api/fetch';
+import { getComics, fetchComics } from './features/comics/comicsSlice';
+
 function App() {
+	const dispatch = useDispatch();
+
+	// Initial call to retrieve comics from the Marvel website
+	useEffect(() => {
+		try {
+			dispatch(fetchComics());
+		} catch (error) {
+			console.log('Error fetching comics.', error);
+		}
+	}, []);
+
+	const comics = useSelector(state => state.comics);
+	console.log('STATE: ', comics);
+
+
 	return (
 		<div className='App'>
 			<span className='headerSection'>

@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
+import { nanoid } from '@reduxjs/toolkit';
+
 import CategoryDropdown from '../category-dropdown/category-dropdown.component';
 
 import { VscTriangleUp } from 'react-icons/vsc';
+
 import {
 	ArrowContainer,
 	NavContainer,
 	NavContent,
 	NavItem,
+	PreviewContainer,
 } from './nav.styles';
+
+import PreviewCard from '../preview-card/preview-card.component';
 
 const Navigation = () => {
 	// Navigation Categories
@@ -37,7 +43,7 @@ const Navigation = () => {
 					return (
 						<>
 							<NavItem
-								key={category}
+								key={nanoid()}
 								value={category}
 								to={`/${category}`}
 								onMouseEnter={() =>
@@ -45,7 +51,6 @@ const Navigation = () => {
 								}>
 								{category.toUpperCase()}
 								<ArrowContainer
-									id='arrow'
 									className='arrow'
 									show={expand}>
 									<VscTriangleUp />
@@ -57,6 +62,18 @@ const Navigation = () => {
 			</NavContent>
 			<CategoryDropdown expand={expand} hovered={hoveredCategory}>
 				{hoveredCategory}
+				<PreviewContainer>
+					{categories.map(category => {
+						return (
+							<PreviewCard
+								key={nanoid()}
+								preview={category}
+								text={hoveredCategory}
+								show={expand}
+							/>
+						);
+					})}
+				</PreviewContainer>
 			</CategoryDropdown>
 		</NavContainer>
 	);
