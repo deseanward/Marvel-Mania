@@ -1,43 +1,49 @@
-import tw, { styled } from 'twin.macro';
-import { Link } from 'react-router-dom';
+import tw, { styled } from "twin.macro";
+import { Link } from "react-router-dom";
 
 export const NavContainer = styled.section`
-	${tw`
+  ${tw`
         flex flex-col items-center
         w-full
-        pt-3
-        
+        h-10
+        mt-16
+        pt-1
+        bg-black
+       absolute
     `}
 `;
 
 export const NavContent = styled.section`
-	${tw`
-        flex justify-between 
-        w-[90%] md:w-[40vw]
+  ${tw`
+        flex justify-between items-center
+        w-[90%] md:w-[60vw]
+
     `}
 `;
 
 export const NavItem = styled(Link)`
-	${tw`
+  ${tw`
         hover:text-[#FFCF6F]
         flex flex-col items-center
+        w-full
     `}
 `;
 
 export const ArrowContainer = styled.span`
-	transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 
-	&.arrow {
-		text-align: center;
-		color: white;
-		border: none;
-		outline: none;
-		opacity: ${props => (props.show === true ? 1 : 0)};
-	}
+  &.arrow {
+    margin-top: -1em;
+    text-align: center;
+    color: white;
+    border: none;
+    outline: none;
+    opacity: ${(props) => (props.show === 'true' ? 1 : 0)};
+  }
 `;
 
 export const PreviewContainer = styled.section`
-	${tw`
+  ${tw`
     flex justify-evenly
     `}
 `;

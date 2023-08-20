@@ -33,14 +33,19 @@
 }
 
 .appContainer {
-  width: 80vw;
-  max-width: 90%;
-  margin-top: 12em;
+  width: 85vw;
+  max-width: 95%;
+  margin-top: 7.5em;
 }
 
 .headerSection {
   width: 100%;
   position: fixed;
   display: block;
+}
+
+.page {
+  /* background-color:#680709; */
+  background-color: white;
 }
 
