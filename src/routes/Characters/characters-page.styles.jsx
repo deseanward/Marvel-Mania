@@ -3,11 +3,10 @@ import tw, { styled } from "twin.macro";
 export const CharactersPageWrapper = styled.div`
   ${tw`
     pt-[0.5em]
-    w-screen h-screen
+    w-[100vw] h-screen
   `}
 
   /* position: relative; */
-  margin-left: -6em;
   top: -0.5em;
 `;
 

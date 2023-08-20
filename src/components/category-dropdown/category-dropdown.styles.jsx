@@ -7,13 +7,14 @@ export const CategoryDropdownContainer = styled.div`
     text-black
     p-4
     rounded-[1em]
-    shadow-lg shadow-[#650809]
+    shadow-lg shadow-black
+    // shadow-[#650809]
     mt-[-.35em]
   `}
 
   /* display: ${(props) => (props.hovered ? "block" : "hidden")}; */
   height: ${(props) => (props.show === 'true' ? "12em" : 0)};
-  opacity: ${(props) => (props.show === 'true' ? 0.8 : 0)};
+  opacity: ${(props) => (props.show === 'true' ? 1 : 0)};
 
   transition: all 0.3s ease-in-out;
 `;

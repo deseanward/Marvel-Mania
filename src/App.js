@@ -2,10 +2,7 @@ import { useEffect } from "react";
 
 import { Routes, Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  fetchComics,
-  fetchCharacters,
-} from "./features/comics/comicsSlice";
+import { fetchComics, fetchCharacters } from "./features/comics/comicsSlice";
 
 import "./App.css";
 import Header from "./components/header/header.component";
@@ -15,6 +12,7 @@ import ComicsPage from "./routes/Comics/comics-page.component";
 import GamesPage from "./routes/Games/games-page.component";
 import HomePage from "./routes/Home/home-page.component";
 import MoviesPage from "./routes/Movies/movies-page.component";
+import DetailsPage from "./routes/Character Details/details-page.component";
 
 function App() {
   // Initial call to retrieve comics from the Marvel website
@@ -31,14 +29,14 @@ function App() {
     JSON.parse(localStorage.getItem("characters"))
   );
 
-  console.log('COMICS FROM APP: ', comics)
-  console.log('CHARACTERS FROM APP: ', characters)
+  console.log("COMICS FROM APP: ", comics);
+  console.log("CHARACTERS FROM APP: ", characters);
 
   // useEffect(() => {
-   
+
   //     dispatch(fetchComics("comics"));
   //     dispatch(fetchCharacters("characters"));
-   
+
   // }, [dispatch]);
 
   return (
@@ -48,11 +46,12 @@ function App() {
       </span>
       <div className='appContainer'>
         <Routes>
-          <Route path='/' element={<HomePage />} />
+          <Route index path='/' element={<HomePage />} />
           <Route path='/comics' element={<ComicsPage />} />
           <Route path='/characters' element={<CharactersPage />} />
           <Route path='/movies' element={<MoviesPage />} />
           <Route path='/games' element={<GamesPage />} />
+          <Route path='characters/:name' element={<DetailsPage />} />
         </Routes>
       </div>
     </div>

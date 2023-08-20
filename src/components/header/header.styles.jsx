@@ -17,12 +17,13 @@ export const LogoContainer = styled(Link)`
   ${tw`
         flex justify-center
         mb-4
-    `}
+        `}
 `;
 
 export const Logo = styled.img`
   ${tw`
         w-[30%]
         hover:opacity-[0.7]
+        shadow shadow-gray-700
     `}
 `;

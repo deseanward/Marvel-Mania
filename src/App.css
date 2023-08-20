@@ -7,9 +7,9 @@
     @apply text-white;
   }
 
-  div {
+  /* div {
     @apply mb-8;
-  }
+  } */
 
   section {
     @apply mb-4;
@@ -29,12 +29,13 @@
   background: url('/public/assets/images/marvel-wp-2.jpg');
   background-size: 100vw 100vh;
   background-repeat: no-repeat;
+  background-position: fixed;
   object-fit: contain;
 }
 
 .appContainer {
-  width: 85vw;
-  max-width: 95%;
+  /* width: 85vw; */
+  /* max-width: 95%; */
   margin-top: 7.5em;
 }
 
