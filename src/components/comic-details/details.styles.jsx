@@ -11,9 +11,4 @@ export const DetailsWrapper = styled.div`
 
     shadow-lg shadow-black
   `}
-
-  #info-container {
-    position: relative;
-    z-index: 10;
-  }
 `;

@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+import React from "react";
 import { nanoid } from "@reduxjs/toolkit";
 
+import AnimatedPage from "../../AnimatedPage";
 
 import {
   CharactersPageContainer,
@@ -11,31 +11,35 @@ import Card from "../../components/card/card.component";
 
 const CharactersPage = () => {
   // Fetch characters from API call
-  const allCharacters = useSelector((state) => state.comics.charactersData);
+  // const allCharacters = useSelector((state) => state.comics.charactersData);
+
+  // Parse the characters from the fetched results (API)
+  // const characters = allCharacters;
 
   // Fetch characters from local storage (while testing)
-  // const allCharacters = JSON.parse(localStorage.getItem("characters"));
+  const allCharacters = JSON.parse(localStorage.getItem("characters"));
 
-  // Parse the characters from the fetched results
-  const characters = allCharacters;
+  // Parse the characters from the fetched results (local storage testing)
+  const characters = allCharacters.data.results;
 
   for (let name in characters) {
     console.log("Name: ", characters[name].name);
   }
 
-
   return (
-    <CharactersPageWrapper className='page'>
-      <CharactersPageContainer>
-        {characters ? (
-          characters.map((character) => {
-            return <Card key={nanoid()} item={character} />;
-          })
-        ) : (
-          <h2>Loading Characters</h2>
-        )}
-      </CharactersPageContainer>
-    </CharactersPageWrapper>
+    <AnimatedPage>
+      <CharactersPageWrapper className='page'>
+        <CharactersPageContainer>
+          {characters ? (
+            characters.map((character) => {
+              return <Card key={nanoid()} item={character} />;
+            })
+          ) : (
+            <h2>Loading Characters</h2>
+          )}
+        </CharactersPageContainer>
+      </CharactersPageWrapper>
+    </AnimatedPage>
   );
 };
 

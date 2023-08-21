@@ -37,6 +37,7 @@ const PreviewCard = ({ category, show, idx, close }) => {
   // const previews = useSelector((state) => state.comics.previewItems);
   const preParse = JSON.parse(localStorage.getItem("characters"));
   const previews = preParse.data.results;
+  
 
   const { name } = previews[idx];
 
@@ -51,7 +52,7 @@ const PreviewCard = ({ category, show, idx, close }) => {
         show={show}
       >
         {previews ? (
-          <div id='button-pic' className='h-[180px] flex flex-col items-center'>
+          <div id='button-pic' className='h-[180px] flex flex-col items-center hover:mt-[-1em]'>
             <div>
               <span id='name'>{name}</span>
             </div>

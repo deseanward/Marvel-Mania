@@ -1,9 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { fetchData } from "../../api/fetch";
-export const comicsSlice = createSlice({
-  name: "comics",
+export const charactersSlice = createSlice({
+  name: "characters",
   initialState: {
-    comicsData: [],
+    charactersData: [],
     selectedItem: {},
     previewItems: [],
   },
@@ -13,8 +13,8 @@ export const comicsSlice = createSlice({
       reducer(state, action) {
         const { payload } = action;
         state.selectedItem = payload;
-        console.log("FETCHED COMICS STATE: ", state.selectedItem);
-        console.log(state.comicsData.data);
+        console.log("FETCHED CHARACTERS STATE: ", state.selectedItem);
+        console.log(state.charactersData.data);
         // return state;
       },
     },
@@ -26,7 +26,7 @@ export const comicsSlice = createSlice({
         let items = [];
 
         for (let idx = 0; idx < 4; idx++) {
-          items.push(payload[idx]);
+          items.push(payload.data.results[idx]);
         }
 
         console.log((state.previewItems = items));
@@ -37,17 +37,16 @@ export const comicsSlice = createSlice({
   // Processing of data returned from the Marvel website
   extraReducers: (builder) => {
     // Returned comics data
-    builder
-      .addCase(fetchComics.fulfilled, (state, action) => {
-        // Merge the formatted posts into the state
-        state.comicsData = action.payload;
-      })
+    builder.addCase(fetchCharacters.fulfilled, (state, action) => {
+      // Merge the formatted posts into the state
+      state.charactersData = action.payload;
+    });
   },
 });
 
-// Initial call for fetching comics information from the Marvel website.
-export const fetchComics = createAsyncThunk(
-  "comics/fetchComics",
+// Initial call for fetching character information from the Marvel website.
+export const fetchCharacters = createAsyncThunk(
+  "characters/fetchCharacters",
   async (term) => {
     try {
       // Call to the site for info
@@ -56,10 +55,10 @@ export const fetchComics = createAsyncThunk(
       // Returns the data to the 'extraReducers' for processing
       return response;
     } catch (error) {
-      console.log("Error fetching comics: ", error);
+      console.log("Error fetching characters: ", error);
     }
   }
 );
 
-export const { fetchItem, fetchPreview } = comicsSlice.actions;
-export default comicsSlice.reducer;
+export const { fetchItem, fetchPreview } = charactersSlice.actions;
+export default charactersSlice.reducer;

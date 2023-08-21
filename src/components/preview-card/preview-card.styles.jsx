@@ -18,7 +18,7 @@ export const PreviewCardContainer = styled(motion.div)`
   
     h-fit w-fit
     flex flex-col items-center justify-center
-    shadow-xl shadow-gray-500
+    // shadow-xl shadow-gray-500
     cursor-pointer
   `}
 

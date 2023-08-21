@@ -14,7 +14,7 @@ export const CardContainer = styled.section`
     h-[360px] 
     border-[1px] border-[gray]
     mx-2 pb-[0.5em]
-    bg-black hover:bg-slate-900
+    bg-black
     flex flex-col justify-around items-center
     rounded-xl
     shadow-lg shadow-black

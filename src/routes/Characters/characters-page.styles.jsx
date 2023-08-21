@@ -20,3 +20,9 @@ export const CharactersPageContainer = styled.div`
   justify-content: center;
   margin: 0 auto;
 `;
+
+export const SearchContainer = styled.div`
+  ${tw`
+      w-[80vw]
+  `}
+`;
