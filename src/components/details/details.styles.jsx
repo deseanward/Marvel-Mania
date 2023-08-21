@@ -6,6 +6,9 @@ export const DetailsWrapper = styled.div`
     flex flex-col items-center justify-evenly
     bg-black
     p-8
-    rounded-lg
+    rounded-xl
+    border-[2px] border-[gray]
+
+    shadow-lg shadow-black
   `}
 `;

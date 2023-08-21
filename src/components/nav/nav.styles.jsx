@@ -10,6 +10,8 @@ export const NavContainer = styled.section`
         pt-1
         bg-black
        absolute
+       shadow-xl shadow-gray-800
+
     `}
 `;
 
@@ -19,6 +21,10 @@ export const NavContent = styled.section`
         w-[90%] md:w-[60vw]
 
     `}
+
+  .inactive {
+    pointer-events: none;
+  }
 `;
 
 export const NavItem = styled(Link)`
@@ -38,7 +44,7 @@ export const ArrowContainer = styled.span`
     color: white;
     border: none;
     outline: none;
-    opacity: ${(props) => (props.show === 'true' ? 1 : 0)};
+    opacity: ${(props) => (props.show === "true" ? 1 : 0)};
   }
 `;
 

@@ -9,6 +9,7 @@ export const fetchData = async (searchTerm) => {
     );
     const data = await res.json();
     localStorage.setItem(term, JSON.stringify(data));
+    console.log(data.data.results);
     return data.data.results;
   } catch (error) {
     console.log("Error fetching data. ", error);

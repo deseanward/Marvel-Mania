@@ -2,7 +2,8 @@ import tw, { styled } from "twin.macro";
 
 export const CategoryDropdownContainer = styled.div`
   ${tw`
-    w-[90%] md:w-[60vw]
+    relative
+    w-[90%] md:w-[80vw]
     bg-white
     text-black
     p-4
@@ -12,9 +13,10 @@ export const CategoryDropdownContainer = styled.div`
     mt-[-.35em]
   `}
 
-  /* display: ${(props) => (props.hovered ? "block" : "hidden")}; */
-  height: ${(props) => (props.show === 'true' ? "12em" : 0)};
-  opacity: ${(props) => (props.show === 'true' ? 1 : 0)};
+  transform: ${(props) =>
+    props.show === "true" ? "translateX(-100)" : "translateX(0)"};
+  height: ${(props) => (props.show === "true" ? "9em" : 0)};
+  opacity: ${(props) => (props.show === "true" ? 1 : 0)};
 
   transition: all 0.3s ease-in-out;
 `;

@@ -1,10 +1,8 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { CardContainer, CardWrapper } from "./card.styles";
 
 const Card = ({ item }) => {
-  const { pathname } = useLocation();
-  console.log(pathname);
   return (
     <CardWrapper>
       <CardContainer>

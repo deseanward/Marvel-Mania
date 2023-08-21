@@ -1,16 +1,33 @@
 import tw, { styled } from "twin.macro";
 import { motion } from "framer-motion";
 
+export const PreviewCardWrapper = styled.div`
+  ${tw`
+    flex flex-col items-center
+    mx-2
+  `}
+
+  transition: all 0.3s ease-in-out 0.5s;
+  .preview-title {
+    opacity: ${(props) => (props.show === "true" ? 1 : 0)};
+  }
+`;
+
 export const PreviewCardContainer = styled(motion.div)`
   ${tw`
-    h-[125px]
-    w-[100px]
-    bg-[tan]
-    flex flex-col items-center
-    shadow-lg shadow-gray-700
+  
+    h-fit w-fit
+    flex flex-col items-center justify-center
+    shadow-xl shadow-gray-500
     cursor-pointer
-  `}/* transition: opacity 1.3s ease-in-out 1.5s;
-opacity: ${(props) => (props.show === 'true' ? 1 : 0)}; */
+  `}
 
-	/* transition: opacity 0.3s ease-in-out; */
+  .image {
+    position: absolute;
+    top: -4em;
+  }
+
+  #btn-link {
+    border: 2px solid black;
+  }
 `;

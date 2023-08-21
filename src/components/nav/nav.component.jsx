@@ -1,5 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { nanoid } from "@reduxjs/toolkit";
+import { useSelector, useDispatch } from "react-redux";
+
+import { fetchPreview } from "../../features/comics/comicsSlice";
 
 import CategoryDropdown from "../category-dropdown/category-dropdown.component";
 
@@ -16,6 +19,17 @@ import {
 import PreviewCard from "../preview-card/preview-card.component";
 
 const Navigation = () => {
+  // Redux calls for selected category
+  const dispatch = useDispatch();
+  const previews = useSelector((state) => state.comics.previewItems);
+  console.log(previews);
+
+  // Pull items from Redux/API call
+  const items = useSelector((state) => state.comics.charactersData);
+
+  // Pull items from local storage
+  // const items = JSON.parse(localStorage.getItem("characters"));
+
   // Navigation Categories
   const categories = ["comics", "characters", "movies", "games"];
 
@@ -37,23 +51,43 @@ const Navigation = () => {
   };
 
   const updateCategory = (category) => {
-    console.log("PREVIEWING: ", category);
+    dispatch(fetchPreview(items));
   };
+
+  const handleClick = (e) => {
+    e.target.classList.toggle("inactive");
+    handleHidePreview();
+    e.target.classList.toggle("inactive");
+  };
+
+  useEffect(
+    (category) => {
+      const getPreview = () => {
+        dispatch(fetchPreview(items));
+
+        //For testing with local storage
+        // dispatch(fetchPreview(items, category));
+      };
+
+      getPreview();
+    },
+    [dispatch, hoveredCategory]
+  );
 
   return (
     <NavContainer onMouseLeave={() => handleHidePreview()}>
       <NavContent>
         {categories.map((category) => {
+          console.log("CATEGORY FROM NAV: ", category);
           return (
             <>
               <NavItem
-                key={nanoid()}
                 value={category}
                 to={`/${category}`}
                 onMouseEnter={() => handleShowPreview(category)}
+                onClick={handleClick}
               >
                 <span
-                  key={nanoid()}
                   className='hover:shadow-xl shadow-red-900'
                   onMouseEnter={() => updateCategory(category)}
                 >
@@ -64,19 +98,22 @@ const Navigation = () => {
           );
         })}
       </NavContent>
-      <ArrowContainer key={nanoid()} className='arrow' show={expand}>
+
+      <ArrowContainer className='arrow' show={expand}>
         <VscTriangleUp />
       </ArrowContainer>
       <CategoryDropdown expand={expand} hovered={hoveredCategory}>
-        {hoveredCategory}
         <PreviewContainer>
           {categories.map((category) => {
+            const idx = categories.indexOf(category);
             return (
               <PreviewCard
                 key={nanoid()}
-                preview={category}
+                idx={idx}
                 text={hoveredCategory}
+                category={hoveredCategory}
                 show={expand}
+                close={handleClick}
               />
             );
           })}
